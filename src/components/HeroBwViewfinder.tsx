@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Camera, Sparkles, Volume2, VolumeX, Palette, FileImage, Sliders } from 'lucide-react'
+import { Camera, Volume2, VolumeX, Palette, FileImage } from 'lucide-react'
 import { BW_HERO_POSES, IMAGE_DIMENSIONS } from '../galleryData'
 
 export function HeroBwViewfinder() {
@@ -84,42 +84,31 @@ export function HeroBwViewfinder() {
       >
         {/* Top HUD Bar */}
         <div className="flex justify-between items-start font-mono text-[10px] sm:text-[11px] tracking-wider">
-          <div className="flex items-center gap-2 bg-black/85 text-white backdrop-blur-md px-2.5 sm:px-3 py-1 border border-white/20">
-            <span className="inline-block w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-            <span className="font-bold">LIVE VIEWFINDER</span>
-            <span className="text-white/40 hidden xs:inline">•</span>
-            <span className="text-emerald-400 font-bold hidden xs:flex items-center gap-1">
+          <div className="flex items-center gap-2 bg-black/85 text-white px-2.5 sm:px-3 py-1">
+            <span className="font-bold">VIEWFINDER</span>
+            <span className="text-white/40">•</span>
+            <span className="text-white/80 flex items-center gap-1">
               <FileImage size={11} />
-              <span>RAW .JPG</span>
+              <span>JPG</span>
             </span>
           </div>
 
-          <div className="bg-black/85 text-white/90 backdrop-blur-md px-2.5 sm:px-3 py-1 border border-white/20 font-mono text-[10px] sm:text-[11px] flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-ping" />
-            <span>AF-C FOCUS</span>
+          <div className="bg-black/85 text-white/80 px-2.5 sm:px-3 py-1 font-mono text-[10px] sm:text-[11px]">
+            <span>{currentPose.tag}</span>
           </div>
         </div>
 
-        {/* Viewfinder Rule-of-Thirds & Corner Framing Brackets */}
+        {/* Viewfinder Corner Framing Brackets */}
         <div className="absolute inset-x-4 sm:inset-x-8 inset-y-12 sm:inset-y-16 pointer-events-none">
-          {/* Corner Framing Brackets */}
-          <div className="absolute top-0 left-0 w-4 sm:w-6 h-4 sm:h-6 border-t-2 border-l-2 border-neutral-800" />
-          <div className="absolute top-0 right-0 w-4 sm:w-6 h-4 sm:h-6 border-t-2 border-r-2 border-neutral-800" />
-          <div className="absolute bottom-12 sm:bottom-14 left-0 w-4 sm:w-6 h-4 sm:h-6 border-b-2 border-l-2 border-neutral-800" />
-          <div className="absolute bottom-12 sm:bottom-14 right-0 w-4 sm:w-6 h-4 sm:h-6 border-b-2 border-r-2 border-neutral-800" />
-
-          {/* Center AF Crosshair */}
-          <div className="absolute inset-0 m-auto w-16 sm:w-24 h-16 sm:h-24 border border-blue-600/40 flex items-center justify-center">
-            <div className="w-1.5 h-1.5 bg-blue-600 rounded-full" />
-            <span className="absolute -top-4 text-[8px] font-mono text-blue-600 font-bold tracking-widest hidden sm:inline">
-              MONOCHROME AF
-            </span>
-          </div>
+          <div className="absolute top-0 left-0 w-4 sm:w-6 h-4 sm:h-6 border-t-2 border-l-2 border-neutral-400/60" />
+          <div className="absolute top-0 right-0 w-4 sm:w-6 h-4 sm:h-6 border-t-2 border-r-2 border-neutral-400/60" />
+          <div className="absolute bottom-12 sm:bottom-14 left-0 w-4 sm:w-6 h-4 sm:h-6 border-b-2 border-l-2 border-neutral-400/60" />
+          <div className="absolute bottom-12 sm:bottom-14 right-0 w-4 sm:w-6 h-4 sm:h-6 border-b-2 border-r-2 border-neutral-400/60" />
         </div>
 
         {/* Camera Parameter Specs Bar (Above bottom controls) */}
         <div className="flex justify-between items-end font-mono text-[10px] md:text-xs mb-12 sm:mb-14">
-          <div className="bg-black/85 text-white backdrop-blur-md px-2.5 sm:px-3 py-1 sm:py-1.5 border border-white/20 flex gap-2.5 sm:gap-3 text-[9px] sm:text-[11px]">
+          <div className="bg-black/85 text-white px-2.5 sm:px-3 py-1 sm:py-1.5 flex gap-2.5 sm:gap-3 text-[9px] sm:text-[11px]">
             <div>
               <span className="text-white/50 block text-[7px] sm:text-[8px]">LENS</span>
               <span className="font-bold">{currentPose.lens}</span>
@@ -130,25 +119,24 @@ export function HeroBwViewfinder() {
             </div>
             <div>
               <span className="text-white/50 block text-[7px] sm:text-[8px]">FOTO</span>
-              <span className="font-bold text-blue-400">#{flashCount}</span>
+              <span className="font-bold">#{flashCount}</span>
             </div>
           </div>
 
-          <div className="bg-black/85 text-white backdrop-blur-md px-2 sm:px-2.5 py-1 border border-white/20 text-[9px] sm:text-[10px]">
-            <span className="text-yellow-400 font-semibold truncate max-w-[130px] sm:max-w-none block">{currentPose.tag}</span>
-          </div>
+          {/* Placeholder to balance the flex row (specs bar sits left) */}
+          <div />
         </div>
       </div>
 
       {/* Interactive Bottom Control Bar - Ergonomic & Responsive */}
       <div
-        className="absolute bottom-2 sm:bottom-3 inset-x-2 sm:inset-x-3 flex items-center justify-between gap-1.5 sm:gap-2 p-1.5 sm:p-2 bg-black/90 backdrop-blur-md border border-white/25"
+        className="absolute bottom-2 sm:bottom-3 inset-x-2 sm:inset-x-3 flex items-center justify-between gap-1.5 sm:gap-2 p-1.5 sm:p-2 bg-black/90"
         style={{ zIndex: 20 }}
       >
         <button
           type="button"
           onClick={triggerShutter}
-          className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 sm:px-4 py-2 bg-[#0040FF] hover:bg-blue-600 active:scale-95 text-white font-mono text-[11px] sm:text-xs tracking-wider uppercase transition-all shadow-md cursor-pointer font-bold"
+          className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 sm:px-4 py-2 bg-[#0040FF] hover:bg-blue-600 active:scale-95 text-white font-mono text-[11px] sm:text-xs tracking-wider uppercase transition-all cursor-pointer font-bold"
           title="Klik shutter remote kamera"
         >
           <Camera size={14} className="shrink-0" />
@@ -159,9 +147,9 @@ export function HeroBwViewfinder() {
           type="button"
           onClick={nextPose}
           className="flex-1 sm:flex-initial flex items-center justify-center gap-1 px-2.5 sm:px-3 py-2 bg-white/15 hover:bg-white/25 active:scale-95 text-white font-mono text-[11px] sm:text-xs tracking-wider transition-all cursor-pointer truncate"
-          title="Ganti pose karakter (1/6)"
+          title={`Ganti pose karakter: ${currentPose.name}`}
         >
-          <Sparkles size={13} className="text-yellow-400 shrink-0" />
+          <Camera size={13} className="shrink-0" />
           <span className="truncate">GANTI ({activePoseIdx + 1}/{BW_HERO_POSES.length})</span>
         </button>
 
@@ -185,7 +173,7 @@ export function HeroBwViewfinder() {
           <button
             type="button"
             onClick={() => setSoundEnabled(!soundEnabled)}
-            className="p-2 text-white/80 hover:text-white bg-white/10 border border-white/20 transition-colors cursor-pointer"
+            className="p-2 text-white/80 hover:text-white bg-white/10 transition-colors cursor-pointer"
             title={soundEnabled ? 'Matikan audio shutter' : 'Nyalakan efek audio shutter'}
             aria-label={soundEnabled ? 'Matikan audio' : 'Nyalakan audio'}
           >

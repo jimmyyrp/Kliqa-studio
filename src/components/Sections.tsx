@@ -3,17 +3,13 @@ import {
   Maximize2,
   X,
   Check,
-  Camera,
   ArrowRight,
   ChevronLeft,
   ChevronRight,
   LayoutGrid,
   Columns,
   Shield,
-  Sparkles,
   Zap,
-  Sliders,
-  Users,
   Download,
 } from 'lucide-react'
 import { BW_SERVICES, IMAGE_DIMENSIONS } from '../galleryData'
@@ -46,7 +42,7 @@ export function HeroSection() {
         {/* Left Column: Headline & Value Proposition */}
         <div className="lg:col-span-6 flex flex-col justify-center">
           <div className="flex items-center gap-2 mb-4 sm:mb-6">
-            <span className="w-2 h-2 bg-[#0040FF] rounded-full animate-ping" />
+            <span className="w-2 h-2 bg-[#0040FF]" />
             <span className="font-mono text-[10px] sm:text-xs tracking-widest text-neutral-600 uppercase font-semibold">
               SELF-PHOTO &amp; MONOCHROME STUDIO — EST. 2026
             </span>
@@ -372,14 +368,6 @@ export function ServicesSection() {
               >
                 {/* Visual 2D Artwork Frame */}
                 <div className="relative w-full h-56 sm:h-64 md:h-72 bg-[#F4F4F2] overflow-hidden border-b border-[#EEEEEE] flex items-center justify-center p-3">
-                  {/* Studio Viewfinder Corner Marks */}
-                  <div className="absolute inset-3 border border-neutral-300/60 pointer-events-none z-10">
-                    <span className="absolute -top-1 -left-1 text-[10px] font-mono text-neutral-400 font-bold">+</span>
-                    <span className="absolute -top-1 -right-1 text-[10px] font-mono text-neutral-400 font-bold">+</span>
-                    <span className="absolute -bottom-1 -left-1 text-[10px] font-mono text-neutral-400 font-bold">+</span>
-                    <span className="absolute -bottom-1 -right-1 text-[10px] font-mono text-neutral-400 font-bold">+</span>
-                  </div>
-
                   {/* 2D Monochrome Artwork */}
                   <img
                     src={s.imageUrl}
@@ -415,14 +403,6 @@ export function ServicesSection() {
                     <span className="hidden sm:inline">PERBESAR</span>
                   </button>
 
-                  {/* Bottom Camera Metadata HUD */}
-                  <div className="absolute bottom-2 left-2.5 right-2.5 z-20 flex justify-between items-center bg-white/95 backdrop-blur-xs px-2.5 py-1 border border-neutral-200 text-neutral-700 font-mono text-[9px] tracking-wider">
-                    <span>{s.lens}</span>
-                    <span className="text-neutral-400">•</span>
-                    <span>{s.iso}</span>
-                    <span className="text-neutral-400">•</span>
-                    <span>{s.time}</span>
-                  </div>
                 </div>
 
                 {/* Card Information Body */}
@@ -588,14 +568,6 @@ export function ServicesSection() {
 
             {/* Modal Image Area */}
             <div className="relative bg-[#F9F9F8] p-6 flex items-center justify-center min-h-[360px] max-h-[60vh] overflow-hidden">
-              {/* Studio Corner Crosshairs */}
-              <div className="absolute inset-6 border border-neutral-300 pointer-events-none">
-                <span className="absolute -top-1 -left-1 text-xs font-mono font-bold text-neutral-400">+</span>
-                <span className="absolute -top-1 -right-1 text-xs font-mono font-bold text-neutral-400">+</span>
-                <span className="absolute -bottom-1 -left-1 text-xs font-mono font-bold text-neutral-400">+</span>
-                <span className="absolute -bottom-1 -right-1 text-xs font-mono font-bold text-neutral-400">+</span>
-              </div>
-
               <img
                 src={activeModal.imageUrl}
                 alt={activeModal.titleDetail}
@@ -606,19 +578,10 @@ export function ServicesSection() {
               />
             </div>
 
-            {/* Modal Footer Specs & Action */}
+            {/* Modal Footer Action */}
             <div className="p-6 bg-white border-t border-neutral-200 flex flex-wrap justify-between items-center gap-4">
-              <div className="flex flex-wrap items-center gap-4 font-mono text-xs text-neutral-600">
-                <div className="flex items-center gap-1.5">
-                  <Camera className="w-3.5 h-3.5 text-neutral-800" />
-                  <span>{activeModal.lens}</span>
-                </div>
-                <span>•</span>
-                <span>{activeModal.iso}</span>
-                <span>•</span>
-                <span>{activeModal.shutter}</span>
-                <span>•</span>
-                <span>{activeModal.time}</span>
+              <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-neutral-600">
+                <span className="font-semibold text-neutral-900">{activeModal.highlight}</span>
               </div>
 
               <div className="flex items-center gap-3">

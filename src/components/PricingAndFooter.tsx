@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Check, Phone, MapPin, Clock, ShieldCheck, Sparkles, ArrowUp, AtSign, ExternalLink } from 'lucide-react'
+import { Check, Phone, MapPin, Clock, ShieldCheck, ArrowUp, AtSign } from 'lucide-react'
+import { waLink, toWaDisplay, SIMULATION_NOTICE, useDeveloper } from '../developer'
 
 export function PricingSection() {
   const [selectedPlan, setSelectedPlan] = useState<'SOLO' | 'BARENG' | 'PRO'>('BARENG')
@@ -75,7 +76,7 @@ export function PricingSection() {
             </h2>
           </div>
           <div className="flex items-center gap-4 font-mono text-xs text-neutral-500">
-            <span>Senopati Studio • All Digital Files Included</span>
+            <span>Harga & paket contoh — website simulasi</span>
           </div>
         </div>
 
@@ -143,8 +144,7 @@ export function PricingSection() {
                   {activePackage.persons} • {activePackage.duration}
                 </span>
                 {activePackage.popular && (
-                  <span className="font-mono text-[10px] bg-[#0040FF] text-white font-bold px-2 py-0.5 flex items-center gap-1">
-                    <Sparkles size={11} />
+                  <span className="font-mono text-[10px] bg-[#0040FF] text-white font-bold px-2 py-0.5">
                     FAVORIT
                   </span>
                 )}
@@ -173,9 +173,9 @@ export function PricingSection() {
               </div>
 
               <a
-                href={`https://wa.me/6281234567890?text=Halo%20KLIQA%20Studio,%20saya%20mau%20booking%20paket%20${encodeURIComponent(
-                  activePackage.name
-                )}%20(${encodeURIComponent(activePackage.price)})`}
+                href={waLink(
+                  `Halo KLIQA Studio, saya mau booking paket ${activePackage.name} (${activePackage.price})`
+                )}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3.5 text-center font-mono text-xs tracking-wider transition-colors uppercase font-bold flex items-center justify-center gap-2 bg-[#0040FF] hover:bg-blue-600 text-white shadow-md active:scale-98"
@@ -211,8 +211,7 @@ export function PricingSection() {
                       {pkg.persons} • {pkg.duration}
                     </span>
                     {pkg.popular && (
-                      <span className="font-mono text-[10px] bg-[#0040FF] text-white font-bold px-2 py-0.5 flex items-center gap-1">
-                        <Sparkles size={10} />
+                      <span className="font-mono text-[10px] bg-[#0040FF] text-white font-bold px-2 py-0.5">
                         FAVORIT
                       </span>
                     )}
@@ -244,9 +243,9 @@ export function PricingSection() {
                 </div>
 
                 <a
-                  href={`https://wa.me/6281234567890?text=Halo%20KLIQA%20Studio,%20saya%20mau%20booking%20paket%20${encodeURIComponent(
-                    pkg.name
-                  )}%20(${encodeURIComponent(pkg.price)})`}
+                  href={waLink(
+                    `Halo KLIQA Studio, saya mau booking paket ${pkg.name} (${pkg.price})`
+                  )}
                   target="_blank"
                   rel="noreferrer"
                   className={`w-full py-3.5 text-center font-mono text-xs tracking-wider transition-colors uppercase font-bold flex items-center justify-center gap-2 ${
@@ -268,6 +267,7 @@ export function PricingSection() {
 }
 
 export function FooterSection() {
+  const dev = useDeveloper()
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -275,6 +275,29 @@ export function FooterSection() {
   return (
     <footer id="lokasi" className="border-t border-[#DDDDDD] bg-[#111111] text-white px-4 sm:px-6 md:px-10 py-16 md:py-20">
       <div className="max-w-[1400px] mx-auto">
+        {/* Simulation / Demo Disclaimer */}
+        <div className="mb-12 border border-neutral-800 bg-neutral-900/60 p-5 sm:p-6">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="font-mono text-[10px] tracking-widest bg-white text-black font-bold px-2 py-0.5">
+              {SIMULATION_NOTICE.badge}
+            </span>
+            <span className="font-serif text-lg font-bold">{SIMULATION_NOTICE.title}</span>
+          </div>
+          <p className="font-sans text-xs text-neutral-400 max-w-3xl leading-relaxed mb-4">
+            {SIMULATION_NOTICE.body}
+          </p>
+          <p className="font-sans text-xs text-neutral-300 mb-3">{SIMULATION_NOTICE.cta}</p>
+          <a
+            href={waLink(SIMULATION_NOTICE.waMessage, dev.whatsapp)}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black hover:bg-[#0040FF] hover:text-white font-mono text-xs tracking-wider font-bold transition-colors active:scale-95"
+          >
+            <Phone size={14} />
+            <span>CHAT {dev.name.toUpperCase()} — {toWaDisplay(dev.whatsapp)}</span>
+          </a>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div className="md:col-span-2 space-y-4">
             <span className="font-serif text-3xl font-bold tracking-tight">
@@ -283,64 +306,59 @@ export function FooterSection() {
             <p className="font-sans text-xs text-neutral-400 max-w-md leading-relaxed">
               Self-Photo &amp; Monochrome Studio modern dengan visual monokrom berkarakter khas studio foto Indonesia. Privasi terjaga, bebas berekspresi tanpa fotografer.
             </p>
-            <div className="font-mono text-xs text-neutral-300 pt-2 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Studio Buka Hari Ini • Walk-in &amp; Reservasi</span>
+            <div className="font-mono text-xs text-neutral-400 pt-2">
+              <span>Website simulasi untuk keperluan demo &amp; portofolio</span>
             </div>
           </div>
 
           <div className="space-y-3 font-mono text-xs">
             <span className="text-white/40 block">LOKASI &amp; JAM BUKA</span>
-            <a
-              href="https://maps.google.com/?q=Jl.+Senopati+No.+88+Kebayoran+Baru+Jakarta+Selatan"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-start gap-2 text-neutral-300 hover:text-white transition-colors group"
-            >
-              <MapPin size={15} className="text-[#0040FF] shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-              <span className="group-hover:underline">
-                Jl. Senopati No. 88, Kebayoran Baru, Jakarta Selatan
-              </span>
-            </a>
-            <div className="flex items-center gap-2 text-neutral-300">
+            <div className="flex items-start gap-2 text-neutral-400">
+              <MapPin size={15} className="text-[#0040FF] shrink-0 mt-0.5" />
+              <span>Jl. Senopati No. 88, Kebayoran Baru, Jakarta Selatan (fiktif)</span>
+            </div>
+            <div className="flex items-center gap-2 text-neutral-400">
               <Clock size={15} className="text-[#0040FF] shrink-0" />
-              <span>Senin - Minggu: 10:00 - 21:00 WIB</span>
+              <span>Senin - Minggu: 10:00 - 21:00 WIB (contoh)</span>
             </div>
           </div>
 
           <div className="space-y-3 font-mono text-xs">
             <span className="text-white/40 block">KONTAK &amp; RESERVASI</span>
             <a
-              href="https://wa.me/6281234567890?text=Halo%20KLIQA%20Studio,%20saya%20ingin%20tanya%20jadwal"
+              href={waLink('Halo KLIQA Studio, saya ingin tanya jadwal', dev.whatsapp)}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 text-neutral-300 hover:text-[#0040FF] transition-colors"
             >
               <Phone size={15} className="text-[#0040FF] shrink-0" />
-              <span>WhatsApp: +62 812-3456-7890</span>
+              <span>WhatsApp: {toWaDisplay(dev.whatsapp)}</span>
             </a>
-            <a
-              href="https://instagram.com/kliqa.studio"
-              target="_blank"
-              rel="noreferrer"
-              className="text-neutral-300 hover:text-[#0040FF] flex items-center gap-1.5 transition-colors"
-            >
-              <AtSign size={15} className="text-[#0040FF] shrink-0" />
-              <span>Instagram: @kliqa.studio</span>
-            </a>
+            <div className="text-neutral-500 flex items-center gap-1.5">
+              <AtSign size={15} className="shrink-0" />
+              <span>Instagram: @kliqa.studio (contoh)</span>
+            </div>
           </div>
         </div>
 
         <div className="border-t border-neutral-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono text-[11px] text-neutral-500">
           <div>
-            © 2026 KLIQA STUDIO. Seluruh hak cipta dilindungi.
+            © 2026 KLIQA STUDIO — Simulasi. Develop oleh{' '}
+            <a
+              href={waLink(SIMULATION_NOTICE.waMessage, dev.whatsapp)}
+              target="_blank"
+              rel="noreferrer"
+              className="text-neutral-300 hover:text-[#0040FF] underline underline-offset-2 transition-colors"
+            >
+              {dev.name}
+            </a>
           </div>
           <div className="flex items-center gap-4">
             <span>Self-Photo &amp; Monochrome Studio • Jakarta</span>
             <button
               type="button"
               onClick={scrollToTop}
-              className="p-2 bg-neutral-800 hover:bg-[#0040FF] text-white rounded transition-colors flex items-center gap-1 cursor-pointer"
+              className="p-2 bg-neutral-800 hover:bg-[#0040FF] text-white transition-colors flex items-center gap-1 cursor-pointer"
               title="Kembali ke atas"
             >
               <ArrowUp size={13} />

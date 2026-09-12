@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Phone, MapPin, ArrowRight, Sparkles } from 'lucide-react'
+import { Menu, X, Phone, MapPin, ArrowRight } from 'lucide-react'
+import { waLink, SIMULATION_NOTICE } from '../developer'
 
 interface NavProps {
   scrolled: boolean
@@ -69,7 +70,7 @@ export function Nav({ scrolled }: NavProps) {
       <header
         className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 md:px-10 py-3.5 md:py-4 flex justify-between items-center transition-all duration-300 ${
           scrolled || mobileMenuOpen
-            ? 'bg-[#F7F6F2]/95 backdrop-blur-md border-b border-[#DDDDDD] shadow-xs'
+            ? 'bg-[#F7F6F2]/95 border-b border-[#DDDDDD] shadow-xs'
             : 'bg-transparent'
         }`}
       >
@@ -83,9 +84,11 @@ export function Nav({ scrolled }: NavProps) {
             KLIQA
           </a>
           <div className="hidden sm:flex items-center gap-2 border-l border-neutral-300 pl-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span className="font-mono text-[10px] tracking-widest text-neutral-600 font-medium">
               SELF-PHOTO STUDIO • SENOPATI
+            </span>
+            <span className="font-mono text-[10px] tracking-widest text-neutral-400 border border-neutral-300 px-1.5 py-0.5">
+              SIMULASI
             </span>
           </div>
         </div>
@@ -115,7 +118,6 @@ export function Nav({ scrolled }: NavProps) {
             href="#paket"
             className="px-5 py-2.5 bg-[#111111] hover:bg-[#0040FF] text-white font-mono text-xs tracking-wider transition-all shadow-xs active:scale-95 flex items-center gap-1.5"
           >
-            <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
             <span>BOOKING JADWAL</span>
           </a>
         </nav>
@@ -156,10 +158,7 @@ export function Nav({ scrolled }: NavProps) {
             <div className="space-y-3">
               <div className="flex items-center justify-between font-mono text-[10px] tracking-widest text-neutral-400 uppercase mb-1">
                 <span>NAVIGASI MENU</span>
-                <span className="text-emerald-600 font-semibold flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  STUDIO OPEN
-                </span>
+                <span className="text-neutral-500 font-semibold">{SIMULATION_NOTICE.badge}</span>
               </div>
               {navLinks.map((link, idx) => {
                 const isActive = activeSection === link.id
@@ -194,7 +193,7 @@ export function Nav({ scrolled }: NavProps) {
             {/* Quick Contact & WhatsApp in Mobile Drawer */}
             <div className="mt-6 pt-4 border-t border-neutral-200 space-y-3">
               <a
-                href="https://wa.me/6281234567890?text=Halo%20KLIQA%20Studio,%20saya%20mau%20tanya%20jadwal%20booking"
+                href={waLink('Halo KLIQA Studio, saya mau tanya jadwal booking')}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3 bg-[#0040FF] text-white font-mono text-xs tracking-wider font-bold flex items-center justify-center gap-2 transition-colors active:scale-98 shadow-sm"
