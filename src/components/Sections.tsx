@@ -16,7 +16,7 @@ import {
   Users,
   Download,
 } from 'lucide-react'
-import { BW_SERVICES } from '../galleryData'
+import { BW_SERVICES, IMAGE_DIMENSIONS } from '../galleryData'
 import { HeroBwViewfinder } from './HeroBwViewfinder'
 
 export function useInView(threshold = 0.12) {
@@ -386,6 +386,9 @@ export function ServicesSection() {
                     alt={s.titleDetail || s.title}
                     className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
+                    decoding="async"
+                    width={IMAGE_DIMENSIONS[s.imageUrl]?.width}
+                    height={IMAGE_DIMENSIONS[s.imageUrl]?.height}
                   />
 
                   {/* Top Left Tag & Highlight */}
@@ -597,6 +600,9 @@ export function ServicesSection() {
                 src={activeModal.imageUrl}
                 alt={activeModal.titleDetail}
                 className="max-h-[50vh] w-auto object-contain mix-blend-multiply"
+                decoding="async"
+                width={IMAGE_DIMENSIONS[activeModal.imageUrl]?.width}
+                height={IMAGE_DIMENSIONS[activeModal.imageUrl]?.height}
               />
             </div>
 

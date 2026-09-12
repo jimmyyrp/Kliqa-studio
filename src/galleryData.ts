@@ -14,6 +14,16 @@ export interface BwIllustrationItem {
 }
 
 // 2D Black & White Character Poses - Gaya gambar 2D tinta tegas dengan perspektif dinamis dan kedalaman studio
+/** Intrinsic dimensions of each studio image — lets <img> tags reserve space before load (no layout shift). */
+export const IMAGE_DIMENSIONS: Record<string, { width: number; height: number }> = {
+  '/images/self_photo.jpg': { width: 896, height: 1200 },
+  '/images/bareng_teman.jpg': { width: 896, height: 1200 },
+  '/images/photobooth.jpg': { width: 896, height: 1200 },
+  '/images/creative_shoot.jpg': { width: 896, height: 1200 },
+  '/images/pasangan_couple.jpg': { width: 1408, height: 768 },
+  '/images/wisuda_grad.jpg': { width: 1408, height: 768 },
+}
+
 export const BW_HERO_POSES = [
   {
     id: 'pose-1',

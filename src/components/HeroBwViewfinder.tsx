@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Camera, Sparkles, Volume2, VolumeX, Palette, FileImage, Sliders } from 'lucide-react'
-import { BW_HERO_POSES } from '../galleryData'
+import { BW_HERO_POSES, IMAGE_DIMENSIONS } from '../galleryData'
 
 export function HeroBwViewfinder() {
   const [activePoseIdx, setActivePoseIdx] = useState(0)
@@ -9,6 +9,7 @@ export function HeroBwViewfinder() {
   const [inverted, setInverted] = useState(false)
   const [soundEnabled, setSoundEnabled] = useState(false)
   const currentPose = BW_HERO_POSES[activePoseIdx]
+  const poseDims = IMAGE_DIMENSIONS[currentPose.imageUrl]
 
   const triggerShutter = () => {
     setIsFlashing(true)
@@ -60,6 +61,10 @@ export function HeroBwViewfinder() {
           style={{
             filter: inverted ? 'invert(1)' : 'none',
           }}
+          fetchPriority="high"
+          decoding="async"
+          width={poseDims?.width}
+          height={poseDims?.height}
         />
       </div>
 

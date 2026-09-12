@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Check, Phone, MapPin, Clock, ShieldCheck, Sparkles, ArrowUp, Instagram, ExternalLink } from 'lucide-react'
+import { Check, Phone, MapPin, Clock, ShieldCheck, Sparkles, ArrowUp, AtSign, ExternalLink } from 'lucide-react'
 
 export function PricingSection() {
   const [selectedPlan, setSelectedPlan] = useState<'SOLO' | 'BARENG' | 'PRO'>('BARENG')
@@ -325,7 +325,7 @@ export function FooterSection() {
               rel="noreferrer"
               className="text-neutral-300 hover:text-[#0040FF] flex items-center gap-1.5 transition-colors"
             >
-              <Instagram size={15} className="text-[#0040FF] shrink-0" />
+              <AtSign size={15} className="text-[#0040FF] shrink-0" />
               <span>Instagram: @kliqa.studio</span>
             </a>
           </div>

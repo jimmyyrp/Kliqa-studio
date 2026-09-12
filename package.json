@@ -10,13 +10,15 @@
     "lint": "tsc --noEmit",
     "format": "oxfmt"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "lucide-react": "^1.39.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
