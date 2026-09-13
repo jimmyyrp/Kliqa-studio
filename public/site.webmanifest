@@ -1,0 +1,22 @@
+{
+  "name": "KLIQA — Self-Photo & Monochrome Studio",
+  "short_name": "KLIQA",
+  "description": "Simulasi website self-photo studio & photobooth — klik dan abadikan momenmu bersama KLIQA.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F6F2",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

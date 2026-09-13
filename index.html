@@ -3,15 +3,83 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kliqa — Photo Studio & Photobooth</title>
-    <meta name="description" content="Self-photo studio dan photobooth service — klik dan abadikan momenmu bersama KLIQA." />
-    <meta property="og:title" content="Kliqa — Photo Studio & Photobooth" />
-    <meta property="og:description" content="Self-photo studio dan photobooth service — klik dan abadikan momenmu bersama KLIQA." />
+
+    <!-- Primary SEO -->
+    <title>KLIQA — Self-Photo Studio &amp; Photobooth Jakarta Selatan</title>
+    <meta
+      name="description"
+      content="Simulasi website self-photo studio & photobooth — foto hitam putih berkarakter, remote shutter nirkabel, tanpa fotografer. Demo desain oleh Jimmy."
+    />
+    <meta
+      name="keywords"
+      content="self photo studio, photobooth, studio foto jakarta, foto hitam putih, monochrome studio, studio senopati, KLIQA"
+    />
+    <meta name="author" content="Jimmy" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#111111" />
+    <link rel="canonical" href="https://kliqa-studio.vercel.app/" />
+
+    <!-- Favicon (huruf K) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icon-512.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="KLIQA Studio" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:url" content="https://kliqa-studio.vercel.app/" />
+    <meta property="og:title" content="KLIQA — Self-Photo Studio &amp; Photobooth Jakarta Selatan" />
+    <meta
+      property="og:description"
+      content="Simulasi website self-photo studio & photobooth — foto hitam putih berkarakter dengan remote shutter nirkabel. Demo desain oleh Jimmy."
+    />
+    <meta property="og:image" content="https://kliqa-studio.vercel.app/images/creative_shoot.jpg" />
+    <meta property="og:image:width" content="1408" />
+    <meta property="og:image:height" content="768" />
+    <meta
+      property="og:image:alt"
+      content="Ilustrasi monokrom sesi creative shoot di studio foto KLIQA"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="KLIQA — Self-Photo Studio &amp; Photobooth Jakarta Selatan" />
+    <meta
+      name="twitter:description"
+      content="Simulasi website self-photo studio & photobooth — foto hitam putih berkarakter dengan remote shutter nirkabel. Demo desain oleh Jimmy."
+    />
+    <meta name="twitter:image" content="https://kliqa-studio.vercel.app/images/creative_shoot.jpg" />
+
+    <!-- Performance: preload hero image -->
     <link rel="preload" as="image" href="/images/self_photo.jpg" fetchpriority="high" />
+
+    <!-- Structured Data: Local Business (simulasi) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ImagePhotoStudio",
+        "name": "KLIQA Studio",
+        "description": "Simulasi website self-photo studio & photobooth dengan visual monokrom berkarakter.",
+        "url": "https://kliqa-studio.vercel.app/",
+        "image": "https://kliqa-studio.vercel.app/images/creative_shoot.jpg",
+        "priceRange": "Rp 65.000 - Rp 195.000 (contoh)",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jl. Senopati No. 88 (fiktif)",
+          "addressLocality": "Jakarta Selatan",
+          "addressCountry": "ID"
+        },
+        "openingHours": "Mo-Su 10:00-21:00",
+        "author": {
+          "@type": "Person",
+          "name": "Jimmy"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

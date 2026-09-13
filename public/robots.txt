@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kliqa-studio.vercel.app/sitemap.xml
